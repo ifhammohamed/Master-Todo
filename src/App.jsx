@@ -73,6 +73,11 @@ function App() {
 
   //DELETE TODO
 
+  const deleteTodo = async (id) => {
+    const docRef = doc(db, "todos", id)
+    await deleteDoc(docRef)
+  }
+
   return (
     <div className={style.bg}>
       <div className={style.container}>
@@ -96,6 +101,7 @@ function App() {
               key={index}
               todo={todo}
               toggleComplete={toggleComplete}
+              deleteTodo={deleteTodo}
             />
           ))}
         </ul>

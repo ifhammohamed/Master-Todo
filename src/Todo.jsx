@@ -17,7 +17,7 @@ const style = {
 
 }
 
-function Todo({ todo, toggleComplete }) {
+function Todo({ todo, toggleComplete, deleteTodo }) {
     return (
         <li className={todo.completed ? style.liComplete : style.li}>
             <div className={style.row}>
@@ -29,10 +29,14 @@ function Todo({ todo, toggleComplete }) {
                 />
                 <p
                     className={todo.completed ? style.textComplete : style.text}
-                    onChange={() => toggleComplete(todo)}
-                >{todo.text}</p>
+                    onClick={() => toggleComplete(todo)}
+                >{todo.text}
+                </p>
             </div>
-            <button className={style.trash}> {<FaRegTrashAlt />}</button>
+            <button
+                className={style.trash}
+                onClick={() => deleteTodo(todo.id)}
+            > {<FaRegTrashAlt />}</button>
         </li>
     )
 }
