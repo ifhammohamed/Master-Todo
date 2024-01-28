@@ -23,7 +23,27 @@ function App() {
   const [input, setInput] = useState('')
 
 
+  // const [isEditing, setIsEditing] = useState(false)
+  // const [todoId, setTodoId] = useState(0)
 
+  //CREATE TODO
+
+  const createTodo = async (e) => {
+    console.log("submitting")
+    e.preventDefault(e)
+
+    if (input === '') {
+      alert('Please Enter a Todo')
+      return //stop the code
+    }
+    else {
+      await addDoc(collection(db, "todos"), {
+        text: input,
+        completed: false
+      })
+      setInput('')
+    }
+  }
 
 
   //READ TODO
