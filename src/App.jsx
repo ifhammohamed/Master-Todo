@@ -61,6 +61,17 @@ function App() {
   }, [])
 
 
+  //UPDATE TODO
+
+  const toggleComplete = async (todo) => {
+    const docRef = doc(db, "todos", todo.id)
+    await updateDoc(docRef, {
+      completed: !todo.completed
+    })
+  }
+
+
+  //DELETE TODO
 
   return (
     <div className={style.bg}>
